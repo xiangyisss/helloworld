@@ -51,4 +51,8 @@ export default {
   fill: none;
   margin-right: 6px;
 }
+
+h1{
+  color: red;
+}
 </style>
