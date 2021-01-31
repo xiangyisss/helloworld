@@ -22,7 +22,6 @@ export default {
   },
   created() {
     EventService.getEvents()
-      .get("http://localhost:3000/events")
       .then(response => {
         this.events = response.data;
       })
