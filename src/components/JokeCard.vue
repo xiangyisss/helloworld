@@ -1,7 +1,9 @@
 <template>
   <div class="question">
     <h4 @click="show(jokeId)">Quesiton: {{ joke.setup }}</h4>
-    <p :id="jokeId" hidden="true">Punchline: {{ joke.punchline }}</p>
+    <div>
+      <p :id="jokeId" class="closed">Punchline: {{ joke.punchline }}</p>
+    </div>
   </div>
 </template>
 
@@ -12,10 +14,20 @@ export default {
     joke: Object,
     jokeId: Number
   },
+  data() {
+    return {
+      isShowing: false,
+      seen: false
+    };
+  },
   methods: {
     show(id) {
       let myData = document.getElementById(id);
-      myData.hidden = false;
+      if (myData.classList == "closed") {
+        myData.classList.add("opened");
+      } else {
+        myData.classList.remove("opened");
+      }
     }
   }
 };
@@ -24,5 +36,11 @@ export default {
 <style scoped>
 h4 {
   cursor: pointer;
+}
+.closed {
+  display: none;
+}
+.opened {
+  display: block;
 }
 </style>
